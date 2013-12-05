@@ -16,6 +16,15 @@ public interface Messages extends com.google.gwt.i18n.client.Messages {
   String closeButton();
 
   /**
+   * Translated "Send".
+   * 
+   * @return translated "Send"
+   */
+  @DefaultMessage("Send")
+  @Key("loginButton")
+  String loginButton();
+
+  /**
    * Translated "Enter your Username".
    * 
    * @return translated "Enter your Username"
@@ -32,13 +41,4 @@ public interface Messages extends com.google.gwt.i18n.client.Messages {
   @DefaultMessage("Enter your Password")
   @Key("passwordField")
   String passwordField();
-
-  /**
-   * Translated "Send".
-   * 
-   * @return translated "Send"
-   */
-  @DefaultMessage("Send")
-  @Key("sendButton")
-  String sendButton();
 }
