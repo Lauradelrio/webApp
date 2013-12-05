@@ -85,14 +85,27 @@ public class login implements EntryPoint {
 
 //        RootPanel.get("nameFieldContainer").setVisible(false);
 //        sendButton.setVisible(false);
-        sendNameToServer();
+        sendNameToChat();
       }
 
       public void onKeyUp(KeyUpEvent event) {
         if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-//          sendNameToServer();
+          sendNameToChat();
         }
       }
+
+
+
+      private void sendNameToChat() {
+          errorLabel.setText("");
+          if (!FieldVerifier.isValidName(nameField.getText(),passwordField.getText())) {
+            errorLabel.setText("Error in Username or Password");
+          }else{
+              RootPanel.get("block").setVisible(false);
+              RootPanel.get("option").setVisible(false);
+          }
+      }
+
 
       private void sendNameToServer() {
         // First, we validate the input.
@@ -100,7 +113,7 @@ public class login implements EntryPoint {
         //sendButton.setVisible(false);
         RootPanel.get("block").setVisible(false);
         String textToServer = nameField.getText();
-        if (!FieldVerifier.isValidName(textToServer)) {
+        if (!FieldVerifier.isValidName(textToServer,passwordField.getText())) {
           errorLabel.setText("Please enter at least four characters");
           return;
         }
