@@ -1,7 +1,6 @@
 package resources.client;
 
 import com.google.gwt.event.dom.client.*;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
 import resources.shared.FieldVerifier;
 
@@ -32,12 +31,12 @@ class HandlerLogin implements ClickHandler, KeyUpHandler {
 
 
     private void sendNameToChat() {
-        login.setError("");
-        user_name=login.getUserName();
-        user_password= login.getPasswordName();
-        login.setTitleChat(user_name);
+        Login.setError("");
+        user_name= Login.getUserName();
+        user_password= Login.getPasswordName();
+        Login.setTitleChat(user_name);
         if (!FieldVerifier.isValidName(user_name, user_password)) {
-            login.setError("Error in Username or Password");
+            Login.setError("Error in Username or Password");
         }else{
             RootPanel.get("block").setVisible(false);
             RootPanel.get("option").setVisible(false);

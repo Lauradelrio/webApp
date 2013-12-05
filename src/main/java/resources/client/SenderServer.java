@@ -11,12 +11,12 @@ import com.google.gwt.user.client.Window;
  * To change this template use File | Settings | File Templates.
  */
 public class SenderServer {
-    public static void doPost(String url, String postData) {
+    public static void doPost(String url, String msg, String user) {
         RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, url);
 
         try {
-            builder.setHeader("Content-Type", "application/x-www-form-urlencoded");
-            Request response = builder.sendRequest(postData, new RequestCallback() {
+            builder.setHeader("Content-Type", "application/json");
+            Request response = builder.sendRequest(msg, new RequestCallback() {
 
                 public void onError(Request request, Throwable exception) {
                     // code omitted for clarity

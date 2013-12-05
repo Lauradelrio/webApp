@@ -16,7 +16,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import java.util.ArrayList;
 
 
-public class login implements EntryPoint {
+public class Login implements EntryPoint {
 
 
     private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
@@ -35,7 +35,7 @@ public class login implements EntryPoint {
     private ArrayList<String> msgList_arraylist;
 
 
-    public login() {
+    public Login() {
         messages = GWT.create(Messages.class);
         login_button = new Button( messages.loginButton() );
         userName_field = new TextBox();

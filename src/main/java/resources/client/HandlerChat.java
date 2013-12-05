@@ -27,7 +27,7 @@ public class HandlerChat implements ClickHandler, KeyUpHandler {
     }
 
     private void sendMsgToServer(){
-        login.cambiarmensajeuser("Enviado");
+        Login.cambiarmensajeuser("Enviado");
         listener_server.requestMessagesToTheServer(url,num_seq);
     }
 
