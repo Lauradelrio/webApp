@@ -13,6 +13,8 @@ import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
+import java.util.ArrayList;
+
 
 public class login implements EntryPoint {
 
@@ -22,17 +24,36 @@ public class login implements EntryPoint {
 
   private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 
-  private final Messages messages = GWT.create(Messages.class);
+  private final Messages messages;
   private String user_name;
+    private final Button login_button;
+    private final TextBox userName_field;
+    private final PasswordTextBox password_field;
+    private final Label error_label;
+    private final TextBox msgUser_Field;
+    private final Button sendMsg_Button;
+    private final TextCell message_TextCell;
+    private CellList<String> msgListChat_CellList;
+    private final Label titleUserChat_Label;
+    private ArrayList<String> msgList_arraylist;
 
 
-  public void onModuleLoad() {
-    final Button login_button = new Button( messages.loginButton() );
-    final TextBox userName_field = new TextBox();
-    final PasswordTextBox password_field = new PasswordTextBox();
-    final Label error_label = new Label();
+    public login() {
+        messages = GWT.create(Messages.class);
+        login_button = new Button( messages.loginButton() );
+        userName_field = new TextBox();
+        password_field = new PasswordTextBox();
+        error_label = new Label();
+        msgUser_Field = new TextBox();
+        sendMsg_Button = new Button(messages.loginButton());
+        message_TextCell = new TextCell();
+        msgListChat_CellList = new CellList<String>(message_TextCell);
+        titleUserChat_Label = new Label();
+        msgList_arraylist = new ArrayList<String>();
+    }
 
 
+    public void onModuleLoad() {
 
       userName_field.getElement().setAttribute("placeholder",messages.nameField());
       password_field.getElement().setAttribute("placeholder",messages.passwordField());
@@ -50,12 +71,11 @@ public class login implements EntryPoint {
 
 
     // Create the chat view
-
-      final TextBox msgUser_Field = new TextBox();
-      final Button sendMsg_Button = new Button();
-      final TextCell message_TextCell = new TextCell();
-      final CellList<String> msgListChat_CellList = new CellList<String>(message_TextCell);
-      final Label titleUserChat_Label = new Label();
+        msgList_arraylist.add("Hola");
+        msgList_arraylist.add("que tal");
+        msgList_arraylist.add("Esto es una prueba");
+        msgListChat_CellList.setRowCount(msgList_arraylist.size(),true);
+        msgListChat_CellList.setRowData(0,msgList_arraylist);
 
       RootPanel.get("titleUserChatContainer").add(titleUserChat_Label);
       RootPanel.get("msgListChatContainer").add(msgListChat_CellList);
@@ -90,6 +110,8 @@ public class login implements EntryPoint {
       }
     });
 
+
+
     class MyHandler implements ClickHandler, KeyUpHandler {
 
       public void onClick(ClickEvent event) {
@@ -120,15 +142,9 @@ public class login implements EntryPoint {
 
 
       private void sendNameToServer() {
-          error_label.setText("Pulsado boton");
-        RootPanel.get("block").setVisible(false);
-        String textToServer = userName_field.getText();
-        if (!FieldVerifier.isValidName(textToServer,password_field.getText())) {
-            error_label.setText("Please enter at least four characters");
-          return;
-        }
 
-          login_button.setEnabled(false);
+        String textToServer = userName_field.getText();
+
         textToServerLabel.setText(textToServer);
         serverResponseLabel.setText("");
         greetingService.greetServer(textToServer, new AsyncCallback<String>() {
@@ -152,9 +168,45 @@ public class login implements EntryPoint {
       }
     }
 
+        class MyHandler2 implements ClickHandler, KeyUpHandler {
+
+            ListenerServer listener_server = new ListenerServer();
+            String url="http://172.16.100.45:8080/chat-kata/api/chat";
+            String num_seq="0";
+
+            public void onClick(ClickEvent event) {
+
+                sendMsgToServer();
+            }
+
+            public void onKeyUp(KeyUpEvent event) {
+                if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+                    sendMsgToServer();
+                }
+            }
+
+            private void sendMsgToServer(){
+                msgUser_Field.setText("Enviado");
+                listener_server.requestMessagesToTheServer(url,num_seq);
+            }
+
+        }
+
     MyHandler handler = new MyHandler();
-      login_button.addClickHandler(handler);
+    MyHandler2 handler2 = new MyHandler2();
+    login_button.addClickHandler(handler);
     userName_field.addKeyUpHandler(handler);
-//    password_Field.addKeyUpHandler(handler);
+    password_field.addKeyUpHandler(handler);
+    sendMsg_Button.addClickHandler(handler2);
+    msgUser_Field.addKeyUpHandler(handler2);
   }
+
+
+
+
+
+
+
+
+
 }
