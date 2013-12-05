@@ -16,23 +16,22 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import java.util.ArrayList;
 
 
-public class Login implements EntryPoint {
+public class Login implements EntryPoint{
 
 
     private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 
     private final Messages messages;
-    private String user_name;
     private final Button login_button;
     private static TextBox userName_field;
     private static PasswordTextBox password_field;
     private static Label error_label;
     private static TextBox msgUser_Field;
     private final Button sendMsg_Button;
-    private static TextCell message_TextCell;
-    private CellList<String> msgListChat_CellList;
+    private static TextCell msg_TextCell;
+    private static CellList<String> msgListChat_CellList;
     private static Label titleUserChat_Label;
-    private ArrayList<String> msgList_arraylist;
+    private static ArrayList<String> msgList_arraylist;
 
 
     public Login() {
@@ -43,8 +42,8 @@ public class Login implements EntryPoint {
         error_label = new Label();
         msgUser_Field = new TextBox();
         sendMsg_Button = new Button(messages.loginButton());
-        message_TextCell = new TextCell();
-        msgListChat_CellList = new CellList<String>(message_TextCell);
+        msg_TextCell = new TextCell();
+        msgListChat_CellList = new CellList<String>(msg_TextCell);
         titleUserChat_Label = new Label();
         msgList_arraylist = new ArrayList<String>();
     }
@@ -107,13 +106,13 @@ public class Login implements EntryPoint {
       }
     });
 
-    HandlerLogin handler = new HandlerLogin();
-    HandlerChat handler2 = new HandlerChat();
-    login_button.addClickHandler(handler);
-    userName_field.addKeyUpHandler(handler);
-    password_field.addKeyUpHandler(handler);
-    sendMsg_Button.addClickHandler(handler2);
-    msgUser_Field.addKeyUpHandler(handler2);
+    HandlerLogin handler_login = new HandlerLogin();
+    HandlerChat handler_chat = new HandlerChat();
+    login_button.addClickHandler(handler_login);
+    userName_field.addKeyUpHandler(handler_login);
+    password_field.addKeyUpHandler(handler_login);
+    sendMsg_Button.addClickHandler(handler_chat);
+    msgUser_Field.addKeyUpHandler(handler_chat);
   }
 
  //TODO borrar
@@ -135,6 +134,15 @@ public class Login implements EntryPoint {
 
     public static void setTitleChat(String name){
         titleUserChat_Label.setText("CHAT KATA - "+ name);
+    }
+
+    public static String getMsgUser(){
+        return  msgUser_Field.getText().toString();
+    }
+
+    public static void setMsgList(ArrayList<String> msg_list){
+        msgListChat_CellList.setRowCount(msg_list.size(),true);
+        msgListChat_CellList.setRowData(0,msg_list);
     }
 
 

@@ -16,6 +16,7 @@ public class SenderServer {
 
         try {
             builder.setHeader("Content-Type", "application/json");
+            msg= msgToFormatJson(msg,user);
             Request response = builder.sendRequest(msg, new RequestCallback() {
 
                 public void onError(Request request, Throwable exception) {
@@ -29,5 +30,9 @@ public class SenderServer {
         } catch (RequestException e) {
             Window.alert("Failed to send the request: " + e.getMessage());
         }
+    }
+
+    private static String msgToFormatJson(String msg, String user){
+       return "{\"nick\": \"" + user + "\", \"message\": \"" + msg + "\"}";
     }
 }
