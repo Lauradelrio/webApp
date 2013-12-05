@@ -1,0 +1,2 @@
+serviceClass: resources.client.GreetingService
+path: 8228FD91E4503256D8ADE982066D18FD.gwt.rpc
