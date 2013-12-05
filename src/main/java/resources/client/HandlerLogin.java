@@ -1,5 +1,10 @@
 package resources.client;
 
+import com.google.gwt.event.dom.client.*;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.RootPanel;
+import resources.shared.FieldVerifier;
+
 /**
  * Created with IntelliJ IDEA.
  * User: laura
@@ -7,5 +12,63 @@ package resources.client;
  * Time: 15:53
  * To change this template use File | Settings | File Templates.
  */
-public class HandlerLogin {
+
+class HandlerLogin implements ClickHandler, KeyUpHandler {
+
+    String user_name;
+    String user_password;
+
+    public void onClick(ClickEvent event) {
+
+        sendNameToChat();
+    }
+
+    public void onKeyUp(KeyUpEvent event) {
+        if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+            sendNameToChat();
+        }
+    }
+
+
+
+    private void sendNameToChat() {
+        login.setError("");
+        user_name=login.getUserName();
+        user_password= login.getPasswordName();
+        login.setTitleChat(user_name);
+        if (!FieldVerifier.isValidName(user_name, user_password)) {
+            login.setError("Error in Username or Password");
+        }else{
+            RootPanel.get("block").setVisible(false);
+            RootPanel.get("option").setVisible(false);
+            RootPanel.get("chat").setVisible(true);
+        }
+    }
+
+
+   /* private void sendNameToServer() {
+
+        String textToServer = userName_field.getText();
+
+        textToServerLabel.setText(textToServer);
+        serverResponseLabel.setText("");
+        greetingService.greetServer(textToServer, new AsyncCallback<String>() {
+            public void onFailure(Throwable caught) {
+                // Show the RPC error message to the user
+                dialogBox.setText("Remote Procedure Call - Failure");
+                serverResponseLabel.addStyleName("serverResponseLabelError");
+                serverResponseLabel.setHTML(SERVER_ERROR);
+                dialogBox.center();
+                closeButton.setFocus(true);
+            }
+
+            public void onSuccess(String result) {
+                dialogBox.setText("Remote Procedure Call");
+                serverResponseLabel.removeStyleName("serverResponseLabelError");
+                serverResponseLabel.setHTML(result);
+                dialogBox.center();
+                closeButton.setFocus(true);
+            }
+        });
+    }*/
 }

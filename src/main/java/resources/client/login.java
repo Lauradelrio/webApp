@@ -18,23 +18,20 @@ import java.util.ArrayList;
 
 public class login implements EntryPoint {
 
-  private static final String SERVER_ERROR = "An error occurred while "
-      + "attempting to contact the server. Please check your network "
-      + "connection and try again.";
 
-  private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
+    private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 
-  private final Messages messages;
-  private String user_name;
+    private final Messages messages;
+    private String user_name;
     private final Button login_button;
-    private final TextBox userName_field;
-    private final PasswordTextBox password_field;
-    private final Label error_label;
-    private final TextBox msgUser_Field;
+    private static TextBox userName_field;
+    private static PasswordTextBox password_field;
+    private static Label error_label;
+    private static TextBox msgUser_Field;
     private final Button sendMsg_Button;
-    private final TextCell message_TextCell;
+    private static TextCell message_TextCell;
     private CellList<String> msgListChat_CellList;
-    private final Label titleUserChat_Label;
+    private static Label titleUserChat_Label;
     private ArrayList<String> msgList_arraylist;
 
 
@@ -110,96 +107,35 @@ public class login implements EntryPoint {
       }
     });
 
-
-
-    class MyHandler implements ClickHandler, KeyUpHandler {
-
-      public void onClick(ClickEvent event) {
-
-        sendNameToChat();
-      }
-
-      public void onKeyUp(KeyUpEvent event) {
-        if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-          sendNameToChat();
-        }
-      }
-
-
-
-      private void sendNameToChat() {
-          error_label.setText("");
-          user_name=userName_field.getText().toString();
-          titleUserChat_Label.setText("CHAT KATA - "+ user_name);
-          if (!FieldVerifier.isValidName(user_name,password_field.getText().toString())) {
-              error_label.setText("Error in Username or Password");
-          }else{
-              RootPanel.get("block").setVisible(false);
-              RootPanel.get("option").setVisible(false);
-              RootPanel.get("chat").setVisible(true);
-          }
-      }
-
-
-      private void sendNameToServer() {
-
-        String textToServer = userName_field.getText();
-
-        textToServerLabel.setText(textToServer);
-        serverResponseLabel.setText("");
-        greetingService.greetServer(textToServer, new AsyncCallback<String>() {
-          public void onFailure(Throwable caught) {
-            // Show the RPC error message to the user
-            dialogBox.setText("Remote Procedure Call - Failure");
-            serverResponseLabel.addStyleName("serverResponseLabelError");
-            serverResponseLabel.setHTML(SERVER_ERROR);
-            dialogBox.center();
-            closeButton.setFocus(true);
-          }
-
-          public void onSuccess(String result) {
-            dialogBox.setText("Remote Procedure Call");
-            serverResponseLabel.removeStyleName("serverResponseLabelError");
-            serverResponseLabel.setHTML(result);
-            dialogBox.center();
-            closeButton.setFocus(true);
-          }
-        });
-      }
-    }
-
-        class MyHandler2 implements ClickHandler, KeyUpHandler {
-
-            ListenerServer listener_server = new ListenerServer();
-            String url="http://172.16.100.45:8080/chat-kata/api/chat";
-            String num_seq="0";
-
-            public void onClick(ClickEvent event) {
-
-                sendMsgToServer();
-            }
-
-            public void onKeyUp(KeyUpEvent event) {
-                if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-                    sendMsgToServer();
-                }
-            }
-
-            private void sendMsgToServer(){
-                msgUser_Field.setText("Enviado");
-                listener_server.requestMessagesToTheServer(url,num_seq);
-            }
-
-        }
-
-    MyHandler handler = new MyHandler();
-    MyHandler2 handler2 = new MyHandler2();
+    HandlerLogin handler = new HandlerLogin();
+    HandlerChat handler2 = new HandlerChat();
     login_button.addClickHandler(handler);
     userName_field.addKeyUpHandler(handler);
     password_field.addKeyUpHandler(handler);
     sendMsg_Button.addClickHandler(handler2);
     msgUser_Field.addKeyUpHandler(handler2);
   }
+
+ //TODO borrar
+    public static void cambiarmensajeuser(String msg){
+        msgUser_Field.setText(msg);
+    }
+
+    public static void setError(String error){
+        error_label.setText(error);
+    }
+
+    public static String getUserName(){
+        return userName_field.getText().toString();
+    }
+
+    public static String getPasswordName(){
+        return password_field.getText().toString();
+    }
+
+    public static void setTitleChat(String name){
+        titleUserChat_Label.setText("CHAT KATA - "+ name);
+    }
 
 
 
