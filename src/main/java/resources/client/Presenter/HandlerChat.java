@@ -2,7 +2,9 @@ package resources.client.Presenter;
 
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.Timer;
-import resources.client.View.Login;
+import resources.client.View.LoginChat;
+import com.google.gwt.user.client.Cookies;
+import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,20 +19,21 @@ public class HandlerChat implements ClickHandler, KeyUpHandler {
     SenderServer sender_server;
     String url="http://172.16.100.215:8080/chat-kata/api/chat";
     private static int num_seq;
-    private int user_name;
+    private static String user_name;
+    static IHandler interface_login = new LoginChat();
 
-    public HandlerChat(){
-        num_seq=0;
-
-
+    public HandlerChat(IHandler login){
+        interface_login=login;
+        user_name=interface_login.getUserName();
+        try{ num_seq= Integer.parseInt(Cookies.getCookie(user_name));
+        }catch (NumberFormatException e){num_seq=0;}
         Timer refreshTimer = new Timer() {
             @Override
             public void run() {
                 listenerServer(num_seq);
             }
         };
-
-        refreshTimer.scheduleRepeating(1000);
+        refreshTimer.scheduleRepeating(500);
     }
 
     public void onClick(ClickEvent event) {
@@ -47,8 +50,8 @@ public class HandlerChat implements ClickHandler, KeyUpHandler {
     private void sendMsgToServer(){
         listenerServer(num_seq);
         sender_server=new SenderServer();
-        sender_server.doPost(url, Login.getMsgUser(),Login.getUserName());
-        Login.setMsgUser("");
+        sender_server.doPost(url, interface_login.getMsgUser(),interface_login.getUserName());
+        interface_login.setMsgUser("");
     }
 
     private void listenerServer(int n_seq){
@@ -58,12 +61,16 @@ public class HandlerChat implements ClickHandler, KeyUpHandler {
 
 
     public static void errorWithServer(String msg){
-        Login.setErrorChat(msg);
+         interface_login.setErrorChat(msg);
     }
 
-    public static void setNumSeq(int n_seq){
-       num_seq=n_seq;
+    public static void setMsgList(ArrayList<String> msg_string_list){
+        interface_login.setMsgList(msg_string_list);
     }
 
+    public static void setNumSeq(int num_s){
+        num_seq=num_s;
+        Cookies.setCookie(user_name, Integer.toString(num_s));
+    }
 
 }

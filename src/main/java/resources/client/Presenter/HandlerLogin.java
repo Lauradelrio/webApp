@@ -2,7 +2,6 @@ package resources.client.Presenter;
 
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.ui.RootPanel;
-import resources.client.View.Login;
 import resources.shared.FieldVerifier;
 
 /**
@@ -17,10 +16,15 @@ public class HandlerLogin implements ClickHandler, KeyUpHandler {
 
     String user_name;
     String user_password;
-    //InterfaceHandler interface_login = new Login();
+    IHandler interface_login;
+
+    public HandlerLogin(IHandler login){
+        interface_login=login;
+
+    }
 
     public void onClick(ClickEvent event) {
-
+        interface_login.setErrorLogin("Error in Username or Password");
         sendNameToChat();
     }
 
@@ -31,12 +35,13 @@ public class HandlerLogin implements ClickHandler, KeyUpHandler {
     }
 
     private void sendNameToChat() {
-        Login.setErrorLogin("");
-        user_name= Login.getUserName();
-        user_password= Login.getPasswordName();
-        Login.setTitleChat(user_name);
+        interface_login.addHandlerChat();
+        interface_login.setErrorLogin("");
+        user_name= interface_login.getUserName();
+        user_password= interface_login.getPasswordName();
+        interface_login.setTitleChat(user_name);
         if (!FieldVerifier.isValidName(user_name, user_password)) {
-            Login.setErrorLogin("Error in Username or Password");
+            interface_login.setErrorLogin("Error in Username or Password");
         }else{
             RootPanel.get("block").setVisible(false);
             RootPanel.get("option").setVisible(false);

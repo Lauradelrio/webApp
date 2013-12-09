@@ -1,6 +1,7 @@
 package resources.client.Presenter;
 
 import com.google.gwt.http.client.*;
+import com.google.gwt.user.client.Cookies;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanCodex;
 import resources.client.Model.IChatMessage;
@@ -8,7 +9,6 @@ import resources.client.Model.IResponse;
 import resources.client.Model.IResponseFactory;
 import resources.client.Model.Message;
 import com.google.gwt.core.shared.GWT;
-import resources.client.View.Login;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class ListenerServer {
                     if (200 == response.getStatusCode()) {
                         HandlerChat.errorWithServer("");
                         IResponse serverResponse = decodeJSON(response.getText());
-                        GETSuccessful(serverResponse);
+                        ToProcessResponse(serverResponse);
                     }  else HandlerChat.errorWithServer("Error: It don't recive message");
                 }
             });
@@ -50,20 +50,21 @@ public class ListenerServer {
         return bean.as();
     }
 
-    public void GETSuccessful(IResponse response) {
+    public void ToProcessResponse(IResponse response) {
         ArrayList<Message> msg_list = new ArrayList<Message>();
         ArrayList<String> msg_string_list = new ArrayList<String>();
 
-        HandlerChat.setNumSeq(response.getNextSeq());
+        int num_s = response.getNextSeq();
+
+        HandlerChat.setNumSeq(num_s);
 
         List<IChatMessage> messages = response.getMessages();
         if(!messages.isEmpty())  {
             for(IChatMessage message : messages){
                 msg_list.add(new Message(message.getNick(),message.getMessage()));
-                msg_string_list.add(message.getMessage());
-                //ChatState.getChatState().getMessages().add(new ChatMessage(message.getNick(), message.getMessage()));
+                msg_string_list.add(message.getNick()+":\t"+message.getMessage());
             }
-            Login.setMsgList(msg_string_list);
+            HandlerChat.setMsgList(msg_string_list);
         }
     }
 }
