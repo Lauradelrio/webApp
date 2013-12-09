@@ -13,7 +13,7 @@ public class HandlerChat implements ClickHandler, KeyUpHandler {
 
     ListenerServer listener_server;
     SenderServer sender_server;
-    String url="http://172.16.100.45:8080/chat-kata/api/chat";
+    String url="http://172.16.100.132:8080/chat-kata/api/chat";
     String num_seq, user_name;
 
     public HandlerChat(){
