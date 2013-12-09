@@ -140,6 +140,10 @@ public class Login implements EntryPoint{
         return  msgUser_Field.getText().toString();
     }
 
+    public static void setMsgUser(String msg){
+        msgUser_Field.setText(msg);
+    }
+
     public static void setMsgList(ArrayList<String> msg_list){
         msgListChat_CellList.setRowCount(msg_list.size(),true);
         msgListChat_CellList.setRowData(0,msg_list);
