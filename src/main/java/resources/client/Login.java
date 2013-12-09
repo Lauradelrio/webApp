@@ -1,6 +1,9 @@
 package resources.client;
 
 import com.google.gwt.cell.client.TextCell;
+import com.google.gwt.dom.client.BodyElement;
+import com.google.gwt.dom.client.DivElement;
+import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.cellview.client.CellList;
 import com.google.gwt.user.client.ui.*;
 import resources.client.Model.Message;
@@ -19,13 +22,14 @@ import java.util.ArrayList;
 public class Login implements EntryPoint{
 
 
-    private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 
+    private static FormPanel login_form;
     private final Messages messages;
-    private final Button login_button;
-    private static TextBox userName_field;
+    private final Button submit;
+    private static Label user_label;
+    private static TextBox name;
     private static PasswordTextBox password_field;
-    private static Label error_label;
+    private static Label errorLogin_label, errorChat_label;
     private static TextBox msgUser_Field;
     private final Button sendMsg_Button;
     private static TextCell msg_TextCell;
@@ -36,10 +40,20 @@ public class Login implements EntryPoint{
 
     public Login() {
         messages = GWT.create(Messages.class);
-        login_button = new Button( messages.loginButton() );
-        userName_field = new TextBox();
+
+        login_form = new FormPanel();
+        RootPanel.get().add(login_form);
+        submit = new Button( "a" );
+
+        user_label = new Label("p");
+        name = new TextBox();
+        name.setName("name");
+
         password_field = new PasswordTextBox();
-        error_label = new Label();
+
+
+        errorLogin_label = new Label();
+        errorChat_label = new Label();
         msgUser_Field = new TextBox();
         sendMsg_Button = new Button(messages.loginButton());
         msg_TextCell = new TextCell();
@@ -51,18 +65,29 @@ public class Login implements EntryPoint{
 
     public void onModuleLoad() {
 
-      userName_field.getElement().setAttribute("placeholder",messages.nameField());
+      user_label.getElement().setAttribute("for","name");
+      name.getElement().setAttribute("placeholder",messages.nameField());
+      name.getElement().setAttribute("required","true");
+
+      //name.getElement().setClassName("user_input");
       password_field.getElement().setAttribute("placeholder",messages.passwordField());
+     // password_field.getElement().setClassName("pass_input");
+      //login_button.getElement().setClassName("submit");
 
+      RootPanel.get("nameFieldContainer").add(name);
+      RootPanel.get("passwordFieldContainer").add(password_field);
+      RootPanel.get("loginButtonContainer").add(submit);
+      RootPanel.get("errorLoginLabelContainer").add(errorLogin_label);
 //    loginButton.addStyleName("sendButton");
+    RootPanel.getBodyElement().getStyle().clearClear();
+    RootPanel.getBodyElement().getStyle().setBackgroundColor("#292931");
+    RootPanel.getBodyElement().getStyle().setMargin(0, Style.Unit.PX);
 
-    RootPanel.get("nameFieldContainer").add(userName_field);
-    RootPanel.get("passwordFieldContainer").add(password_field);
-    RootPanel.get("loginButtonContainer").add(login_button);
-    RootPanel.get("errorLabelContainer").add(error_label);
 
-      userName_field.setFocus(true);
-      userName_field.selectAll();
+    RootPanel.get("block").setStylePrimaryName("block");
+
+      name.setFocus(true);
+      name.selectAll();
 
 
 
@@ -77,39 +102,14 @@ public class Login implements EntryPoint{
       RootPanel.get("msgListChatContainer").add(msgListChat_CellList);
       RootPanel.get("msgUserFieldContainer").add(msgUser_Field);
       RootPanel.get("sendMsgButtonContainer").add(sendMsg_Button);
+      RootPanel.get("errorChatLabelContainer").add(errorChat_label);
 
       RootPanel.get("chat").setVisible(false);
 
-
-    final DialogBox dialogBox = new DialogBox();
-    dialogBox.setText("Remote Procedure Call");
-    dialogBox.setAnimationEnabled(true);
-    final Button closeButton = new Button("Close");
-    closeButton.getElement().setId("closeButton");
-    final Label textToServerLabel = new Label();
-    final HTML serverResponseLabel = new HTML();
-    VerticalPanel dialogVPanel = new VerticalPanel();
-    dialogVPanel.addStyleName("dialogVPanel");
-    dialogVPanel.add(new HTML("<b>Sending name to the server:</b>"));
-    dialogVPanel.add(textToServerLabel);
-    dialogVPanel.add(new HTML("<br><b>Server replies:</b>"));
-    dialogVPanel.add(serverResponseLabel);
-    dialogVPanel.setHorizontalAlignment(VerticalPanel.ALIGN_RIGHT);
-    dialogVPanel.add(closeButton);
-    dialogBox.setWidget(dialogVPanel);
-
-    closeButton.addClickHandler(new ClickHandler() {
-      public void onClick(ClickEvent event) {
-        dialogBox.hide();
-          login_button.setEnabled(true);
-          login_button.setFocus(true);
-      }
-    });
-
     HandlerLogin handler_login = new HandlerLogin();
     HandlerChat handler_chat = new HandlerChat();
-    login_button.addClickHandler(handler_login);
-    userName_field.addKeyUpHandler(handler_login);
+    submit.addClickHandler(handler_login);
+    name.addKeyUpHandler(handler_login);
     password_field.addKeyUpHandler(handler_login);
     sendMsg_Button.addClickHandler(handler_chat);
     msgUser_Field.addKeyUpHandler(handler_chat);
@@ -121,11 +121,11 @@ public class Login implements EntryPoint{
     }
 
     public static void setError(String error){
-        error_label.setText(error);
+        errorLogin_label.setText(error);
     }
 
     public static String getUserName(){
-        return userName_field.getText().toString();
+        return name.getText().toString();
     }
 
     public static String getPasswordName(){
@@ -147,7 +147,7 @@ public class Login implements EntryPoint{
     //TODO cambiar a lista de message
     public static void setMsgList(ArrayList<String> msg_list){
         msgListChat_CellList.setRowCount(msg_list.size(),true);
-        msgListChat_CellList.setRowData(0,msg_list);
+        msgListChat_CellList.setRowData(0, msg_list);
     }
 
 
