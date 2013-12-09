@@ -11,9 +11,14 @@ import com.google.gwt.event.dom.client.*;
  */
 public class HandlerChat implements ClickHandler, KeyUpHandler {
 
-    ListenerServer listener_server = new ListenerServer();
+    ListenerServer listener_server;
+    SenderServer sender_server;
     String url="http://172.16.100.45:8080/chat-kata/api/chat";
-    String num_seq="0";
+    String num_seq, user_name;
+
+    public HandlerChat(){
+        num_seq="0";
+    }
 
     public void onClick(ClickEvent event) {
 
@@ -27,8 +32,10 @@ public class HandlerChat implements ClickHandler, KeyUpHandler {
     }
 
     private void sendMsgToServer(){
-        Login.cambiarmensajeuser("Enviado");
+        listener_server= new ListenerServer();
         listener_server.requestMessagesToTheServer(url,num_seq);
+        sender_server=new SenderServer();
+        sender_server.doPost(url,Login.getMsgUser(),Login.getUserName());
     }
 
 }

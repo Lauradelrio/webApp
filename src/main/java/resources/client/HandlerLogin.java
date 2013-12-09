@@ -28,8 +28,6 @@ class HandlerLogin implements ClickHandler, KeyUpHandler {
         }
     }
 
-
-
     private void sendNameToChat() {
         Login.setError("");
         user_name= Login.getUserName();
