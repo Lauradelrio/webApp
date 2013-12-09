@@ -1,6 +1,7 @@
 package resources.client;
 
 import com.google.gwt.event.dom.client.*;
+import com.google.gwt.user.client.Timer;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,11 +14,21 @@ public class HandlerChat implements ClickHandler, KeyUpHandler {
 
     ListenerServer listener_server;
     SenderServer sender_server;
-    String url="http://172.16.100.132:8080/chat-kata/api/chat";
-    String num_seq, user_name;
+    String url="http://172.16.100.215:8080/chat-kata/api/chat";
+    int num_seq, user_name;
 
     public HandlerChat(){
-        num_seq="0";
+        num_seq=0;
+
+
+        Timer refreshTimer = new Timer() {
+            @Override
+            public void run() {
+                lisenerServer(num_seq);
+            }
+        };
+
+        refreshTimer.scheduleRepeating(1000);
     }
 
     public void onClick(ClickEvent event) {
@@ -32,10 +43,15 @@ public class HandlerChat implements ClickHandler, KeyUpHandler {
     }
 
     private void sendMsgToServer(){
-        listener_server= new ListenerServer();
-        listener_server.requestMessagesToTheServer(url,num_seq);
+        lisenerServer(num_seq);
         sender_server=new SenderServer();
         sender_server.doPost(url,Login.getMsgUser(),Login.getUserName());
+        Login.setMsgUser("");
+    }
+
+    private void lisenerServer(int n_seq){
+        listener_server= new ListenerServer();
+        listener_server.requestMessagesToTheServer(url,Integer.toString(n_seq));
     }
 
 }

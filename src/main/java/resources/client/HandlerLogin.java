@@ -16,6 +16,7 @@ class HandlerLogin implements ClickHandler, KeyUpHandler {
 
     String user_name;
     String user_password;
+    //InterfaceHandler interface_login = new Login();
 
     public void onClick(ClickEvent event) {
 
