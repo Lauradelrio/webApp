@@ -1,4 +1,6 @@
-package resources.client;
+package resources.client.Model;
+
+import resources.client.Model.IChatMessage;
 
 /**
  * Created with IntelliJ IDEA.
@@ -7,7 +9,7 @@ package resources.client;
  * Time: 10:01
  * To change this template use File | Settings | File Templates.
  */
-public class Message {
+public class Message implements IChatMessage {
     private String message;
     private String nick;
 

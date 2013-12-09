@@ -3,7 +3,7 @@ package resources.client;
 import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.user.cellview.client.CellList;
 import com.google.gwt.user.client.ui.*;
-import resources.shared.FieldVerifier;
+import resources.client.Model.Message;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -144,6 +144,7 @@ public class Login implements EntryPoint{
         msgUser_Field.setText(msg);
     }
 
+    //TODO cambiar a lista de message
     public static void setMsgList(ArrayList<String> msg_list){
         msgListChat_CellList.setRowCount(msg_list.size(),true);
         msgListChat_CellList.setRowData(0,msg_list);
