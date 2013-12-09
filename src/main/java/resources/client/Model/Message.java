@@ -1,7 +1,5 @@
 package resources.client.Model;
 
-import resources.client.Model.IChatMessage;
-
 /**
  * Created with IntelliJ IDEA.
  * User: laura
