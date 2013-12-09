@@ -2,7 +2,6 @@ package resources.client.Presenter;
 
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.ui.RootPanel;
-import resources.shared.FieldVerifier;
 
 /**
  * Created with IntelliJ IDEA.
@@ -40,12 +39,20 @@ public class HandlerLogin implements ClickHandler, KeyUpHandler {
         user_name= interface_login.getUserName();
         user_password= interface_login.getPasswordName();
         interface_login.setTitleChat(user_name);
-        if (!FieldVerifier.isValidName(user_name, user_password)) {
+        if (!isValidName(user_name, user_password)) {
             interface_login.setErrorLogin("Error in Username or Password");
         }else{
             RootPanel.get("block").setVisible(false);
             RootPanel.get("option").setVisible(false);
             RootPanel.get("chat").setVisible(true);
         }
+    }
+
+    private boolean isValidName(String name, String password) {
+        boolean valid=false;
+        if (!name.equals("") && !password.equals("")) {
+            valid= true;
+        }
+        return valid;
     }
 }

@@ -25,6 +25,7 @@ public class LoginChat implements EntryPoint, IHandler{
     private int countCell;
     private HandlerLogin handler_login;
     private HandlerChat handler_chat;
+    private ScrollPanel msgList_scrollpanel;
 
 
     public LoginChat() {
@@ -40,7 +41,7 @@ public class LoginChat implements EntryPoint, IHandler{
         titleUserChat_Label = new Label();
         errorChat_label = new Label();
         countCell=0;
-
+        msgList_scrollpanel= new ScrollPanel();
     }
 
 
@@ -50,17 +51,20 @@ public class LoginChat implements EntryPoint, IHandler{
       // Create the login view
       userName_field.getElement().setAttribute("placeholder",messages.nameField());
       password_field.getElement().setAttribute("placeholder",messages.passwordField());
-    RootPanel.get("nameFieldContainer").add(userName_field);
-    RootPanel.get("passwordFieldContainer").add(password_field);
-    RootPanel.get("loginButtonContainer").add(login_button);
-    RootPanel.get("errorLoginLabelContainer").add(errorLogin_label);
+      RootPanel.get("nameFieldContainer").add(userName_field);
+      RootPanel.get("passwordFieldContainer").add(password_field);
+      RootPanel.get("loginButtonContainer").add(login_button);
+      RootPanel.get("errorLoginLabelContainer").add(errorLogin_label);
       userName_field.setFocus(true);
       userName_field.selectAll();
 
 
     // Create the chat view
-       RootPanel.get("titleUserChatContainer").add(titleUserChat_Label);
-      RootPanel.get("msgListChatContainer").add(msgListChat_CellList);
+        msgList_scrollpanel.add(msgListChat_CellList);
+        msgList_scrollpanel.addStyleName("scroll");
+
+      RootPanel.get("titleUserChatContainer").add(titleUserChat_Label);
+      RootPanel.get("msgListChatContainer").add(msgList_scrollpanel);
       RootPanel.get("msgUserFieldContainer").add(msgUser_Field);
       RootPanel.get("sendMsgButtonContainer").add(sendMsg_Button);
       RootPanel.get("errorChatLabelContainer").add(errorChat_label);
@@ -98,7 +102,6 @@ public class LoginChat implements EntryPoint, IHandler{
         msgUser_Field.setText(msg);
     }
 
-    //TODO cambiar a lista de message
     public void setMsgList(ArrayList<String> msg_list){
         countCell += msg_list.size();
         msgListChat_CellList.setPageSize(countCell);
