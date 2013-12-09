@@ -1,4 +1,4 @@
-package resources.client;
+package resources.client.Presenter;
 
 import com.google.gwt.http.client.*;
 import com.google.gwt.user.client.Window;
@@ -20,16 +20,14 @@ public class SenderServer {
             Request response = builder.sendRequest(msg, new RequestCallback() {
 
                 public void onError(Request request, Throwable exception) {
-                    // code omitted for clarity
+                    HandlerChat.errorWithServer("Error: Message can't be delivered");
                 }
 
                 public void onResponseReceived(Request request, Response response) {
-                    // code omitted for clarity
+                    HandlerChat.errorWithServer("Delivered");
                 }
             });
-        } catch (RequestException e) {
-            Window.alert("Failed to send the request: " + e.getMessage());
-        }
+        } catch (RequestException e) {}
     }
 
     private static String msgToFormatJson(String msg, String user){

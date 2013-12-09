@@ -1,4 +1,4 @@
-package resources.client;
+package resources.client.Presenter;
 
 import java.util.ArrayList;
 
@@ -10,10 +10,12 @@ import java.util.ArrayList;
  * To change this template use File | Settings | File Templates.
  */
 public interface InterfaceHandler {
-    public void setError(String error);
+    public void setErrorLogin(String error);
     public String getUserName();
     public String getPasswordName();
     public void setTitleChat(String name);
     public String getMsgUser();
+    public void setMsgUser(String msg);
     public void setMsgList(ArrayList<String> msg_list);
+    public void setErrorChat(String error);
 }

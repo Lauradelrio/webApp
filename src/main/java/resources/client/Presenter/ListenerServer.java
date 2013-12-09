@@ -1,4 +1,4 @@
-package resources.client;
+package resources.client.Presenter;
 
 import com.google.gwt.http.client.*;
 import com.google.web.bindery.autobean.shared.AutoBean;
@@ -8,7 +8,7 @@ import resources.client.Model.IResponse;
 import resources.client.Model.IResponseFactory;
 import resources.client.Model.Message;
 import com.google.gwt.core.shared.GWT;
-import com.google.web.bindery.autobean.vm.AutoBeanFactorySource;
+import resources.client.View.Login;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,29 +23,24 @@ import java.util.List;
 public class ListenerServer {
     public void requestMessagesToTheServer (String url,String num_seq) {
         String url_get = url+ "?next_seq="+num_seq;
-        RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, URL.encode(url));
+        RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, URL.encode(url_get));
         Request request;
-//        final JSONObject msg_json = new JSONObject();
-//        String message, next_seq;
-//        JSONArray messages_json = new JSONArray();
 
         try {
             request = builder.sendRequest(null, new RequestCallback() {
                 public void onError(Request request, Throwable exception) {
-                  //  responseHandler.GETFail();
+                    HandlerChat.errorWithServer("Error: Conexion server");
                 }
 
                 public void onResponseReceived(Request request, Response response) {
                     if (200 == response.getStatusCode()) {
+                        HandlerChat.errorWithServer("");
                         IResponse serverResponse = decodeJSON(response.getText());
                         GETSuccessful(serverResponse);
-                    } else{}
-                       // responseHandler.GETFail();
+                    }  else HandlerChat.errorWithServer("Error: It don't recive message");
                 }
             });
-        } catch (RequestException e) {
-            // Couldn't connect to server
-        }
+        } catch (RequestException e) {}
     }
 
 
@@ -59,19 +54,17 @@ public class ListenerServer {
         ArrayList<Message> msg_list = new ArrayList<Message>();
         ArrayList<String> msg_string_list = new ArrayList<String>();
 
-       /* ChatState chatState = ChatState.getChatState();
+        HandlerChat.setNumSeq(response.getNextSeq());
 
-        //coge el nex_seq de response
-        chatState.setNextSeq(response.getNextSeq());*/
-
-        //lee msg de response
         List<IChatMessage> messages = response.getMessages();
-        for(IChatMessage message : messages){
-            msg_list.add(new Message(message.getNick(),message.getMessage()));
-            msg_string_list.add(message.getMessage());
-            //ChatState.getChatState().getMessages().add(new ChatMessage(message.getNick(), message.getMessage()));
+        if(!messages.isEmpty())  {
+            for(IChatMessage message : messages){
+                msg_list.add(new Message(message.getNick(),message.getMessage()));
+                msg_string_list.add(message.getMessage());
+                //ChatState.getChatState().getMessages().add(new ChatMessage(message.getNick(), message.getMessage()));
+            }
+            Login.setMsgList(msg_string_list);
         }
-        Login.setMsgList(msg_string_list);
     }
 }
 

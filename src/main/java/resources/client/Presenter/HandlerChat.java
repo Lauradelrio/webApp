@@ -1,7 +1,8 @@
-package resources.client;
+package resources.client.Presenter;
 
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.Timer;
+import resources.client.View.Login;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,7 +16,8 @@ public class HandlerChat implements ClickHandler, KeyUpHandler {
     ListenerServer listener_server;
     SenderServer sender_server;
     String url="http://172.16.100.215:8080/chat-kata/api/chat";
-    int num_seq, user_name;
+    private static int num_seq;
+    private int user_name;
 
     public HandlerChat(){
         num_seq=0;
@@ -24,7 +26,7 @@ public class HandlerChat implements ClickHandler, KeyUpHandler {
         Timer refreshTimer = new Timer() {
             @Override
             public void run() {
-                lisenerServer(num_seq);
+                listenerServer(num_seq);
             }
         };
 
@@ -43,15 +45,25 @@ public class HandlerChat implements ClickHandler, KeyUpHandler {
     }
 
     private void sendMsgToServer(){
-        lisenerServer(num_seq);
+        listenerServer(num_seq);
         sender_server=new SenderServer();
-        sender_server.doPost(url,Login.getMsgUser(),Login.getUserName());
+        sender_server.doPost(url, Login.getMsgUser(),Login.getUserName());
         Login.setMsgUser("");
     }
 
-    private void lisenerServer(int n_seq){
+    private void listenerServer(int n_seq){
         listener_server= new ListenerServer();
         listener_server.requestMessagesToTheServer(url,Integer.toString(n_seq));
     }
+
+
+    public static void errorWithServer(String msg){
+        Login.setErrorChat(msg);
+    }
+
+    public static void setNumSeq(int n_seq){
+       num_seq=n_seq;
+    }
+
 
 }

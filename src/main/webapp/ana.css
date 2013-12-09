@@ -19,6 +19,8 @@ label{
 	-webkit-font-smoothing: antialiased; 
 }
 #block,#option{
+display:block;
+ali
 	width:330px;
 	height:115px;
 	margin:auto;
