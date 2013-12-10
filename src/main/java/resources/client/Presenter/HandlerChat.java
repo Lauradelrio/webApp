@@ -23,13 +23,14 @@ public class HandlerChat implements ClickHandler, KeyUpHandler {
     private static String user_name;
     static IHandler interface_login = new LoginChat();
     Widget sender;
+    Timer refreshTimer;
 
     public HandlerChat(IHandler login){
         interface_login=login;
         user_name=interface_login.getUserName();
         try{ num_seq= Integer.parseInt(Cookies.getCookie(user_name));
         }catch (NumberFormatException e){num_seq=0;}
-        Timer refreshTimer = new Timer() {
+        refreshTimer = new Timer() {
             @Override
             public void run() {
                 listenerServer(num_seq);
@@ -83,6 +84,10 @@ public class HandlerChat implements ClickHandler, KeyUpHandler {
     public static void setNumSeq(int num_s){
         num_seq=num_s;
         Cookies.setCookie(user_name, Integer.toString(num_s));
+    }
+
+    public Timer getRefreshTimer(){
+        return refreshTimer;
     }
 
 }

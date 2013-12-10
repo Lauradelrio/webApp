@@ -52,11 +52,11 @@ public interface Messages extends com.google.gwt.i18n.client.Messages {
   String passwordField();
 
   /**
-   * Translated "Send".
+   * Translated "a".
    * 
-   * @return translated "Send"
+   * @return translated "a"
    */
-  @DefaultMessage("Send")
+  @DefaultMessage("a")
   @Key("sendButton")
   String sendButton();
 }

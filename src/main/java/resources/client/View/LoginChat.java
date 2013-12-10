@@ -3,8 +3,7 @@ package resources.client.View;
 import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.MouseUpHandler;
-import com.google.gwt.event.dom.client.MouseUpEvent;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.cellview.client.CellList;
 import com.google.gwt.user.client.ui.*;
 import resources.client.Messages;
@@ -17,9 +16,6 @@ import java.util.ArrayList;
 
 
 public class LoginChat implements EntryPoint, IHandler{
-
-
-
 
     private final Messages messages;
     private Button submit, sendMsg_Button, logout_button;
@@ -34,6 +30,8 @@ public class LoginChat implements EntryPoint, IHandler{
     private ScrollPanel msgList_scrollpanel;
     private Label user;   //use: icon field
     private Label pass;   //use: icon field
+    private HandlerRegistration handler_send_msg_button, handler_msg_user_field, handler_logout_msg_button;
+
 
     public LoginChat() {
         messages = GWT.create(Messages.class);
@@ -58,6 +56,8 @@ public class LoginChat implements EntryPoint, IHandler{
 
 
     public void onModuleLoad() {
+
+
       // Create the login view
         user.getElement().setClassName("label_block");
         user.getElement().setAttribute("for","name");
@@ -88,31 +88,28 @@ public class LoginChat implements EntryPoint, IHandler{
         RootPanel.get("errorLoginLabelContainer").add(errorLogin_label);
 
         RootPanel.get().addStyleName("body");
-
-
+        
     // Create the chat view
+        titleUserChat_Label.getElement().setClassName("p");
 
-      titleUserChat_Label.getElement().setClassName("p");
+        msgList_scrollpanel.add(msgListChat_CellList);
+        msgList_scrollpanel.addStyleName("scroll");
+        RootPanel.get("titleUserChatContainer").addStyleName("head_chat");
+        msgUser_Field.getElement().setClassName("input_message");
+        RootPanel.get("msgListChatContainer").addStyleName("msg_list");
+        sendMsg_Button.getElement().setClassName("send");
+        logout_button.getElement().addClassName("logout_button");
 
-      msgList_scrollpanel.add(msgListChat_CellList);
-      msgList_scrollpanel.addStyleName("scroll");
-      RootPanel.get("titleUserChatContainer").addStyleName("head_chat");
-      msgUser_Field.getElement().setClassName("input_message");
-      RootPanel.get("msgListChatContainer").addStyleName("msg_list");
-      sendMsg_Button.getElement().setClassName("send");
-      logout_button.getElement().addClassName("logout_button");
+        RootPanel.get("errorChatLabelContainer").addStyleName("warning");
+        RootPanel.get("titleUserChatContainer").add(titleUserChat_Label);
+        RootPanel.get("msgListChatContainer").add(msgList_scrollpanel);
+        RootPanel.get("msgUserFieldContainer").add(msgUser_Field);
+        RootPanel.get("sendMsgButtonContainer").add(sendMsg_Button);
+        RootPanel.get("errorChatLabelContainer").add(errorChat_label);
+        RootPanel.get("logOutButtonContainer").add(logout_button);
+        RootPanel.get("chat").setVisible(false);
 
-      RootPanel.get("errorChatLabelContainer").addStyleName("warning");
-      RootPanel.get("titleUserChatContainer").add(titleUserChat_Label);
-      RootPanel.get("msgListChatContainer").add(msgList_scrollpanel);
-      RootPanel.get("msgUserFieldContainer").add(msgUser_Field);
-      RootPanel.get("sendMsgButtonContainer").add(sendMsg_Button);
-      RootPanel.get("errorChatLabelContainer").add(errorChat_label);
-      RootPanel.get("logOutButtonContainer").add(logout_button);
-      RootPanel.get("chat").setVisible(false);
-
-
-    handler_login = new HandlerLogin(this);
+        handler_login = new HandlerLogin(this);
         submit.addClickHandler(handler_login);
         name_field.addKeyUpHandler(handler_login);
         password_field.addKeyUpHandler(handler_login);
@@ -158,15 +155,19 @@ public class LoginChat implements EntryPoint, IHandler{
 
     public void addHandlerChat(){
         handler_chat = new HandlerChat(this);
-        sendMsg_Button.addClickHandler(handler_chat);
-        msgUser_Field.addKeyUpHandler(handler_chat);
-        logout_button.addClickHandler(handler_chat);
+        handler_send_msg_button = sendMsg_Button.addClickHandler(handler_chat);
+        handler_msg_user_field = msgUser_Field.addKeyUpHandler(handler_chat);
+        handler_logout_msg_button = logout_button.addClickHandler(handler_chat);
     }
 
     public void logout(){
         name_field.setText("");
         password_field.setText("");
         countCell=0;
+        handler_send_msg_button.removeHandler();
+        handler_logout_msg_button.removeHandler();
+        handler_msg_user_field.removeHandler();
+        handler_chat.getRefreshTimer().cancel();
         RootPanel.get("chat").setVisible(false);
         RootPanel.get("block").setVisible(true);
     }
