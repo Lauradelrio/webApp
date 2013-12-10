@@ -37,8 +37,9 @@ public class ListenerServer {
                         HandlerChat.errorWithServer("");
                         IResponse serverResponse = decodeJSON(response.getText());
                         ToProcessResponse(serverResponse);
-                    }  else HandlerChat.errorWithServer("Error: It don't recive message");
-                    //TODO borrar cookies
+                    }  else {
+                        HandlerChat.errorWithServer("Error: It don't recive message");
+                    }
                 }
             });
         } catch (RequestException e) {}
