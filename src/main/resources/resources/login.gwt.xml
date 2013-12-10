@@ -13,11 +13,11 @@
   <inherits name='com.google.gwt.user.theme.standard.Standard' />
   <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
-
+    <stylesheet src="login.css" />
   <!-- Other module inherits                                      -->
     <inherits name="com.google.gwt.json.JSON" />
     <inherits name="com.google.gwt.http.HTTP" />
-    <inherits name="com.google.web.bindery.autobean.AutoBean"/>
+    <inherits name="com.google.web.bindery.autobean.AutoBean" />
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='resources.client.View.LoginChat' />

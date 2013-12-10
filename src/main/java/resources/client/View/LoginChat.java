@@ -18,8 +18,7 @@ import java.util.ArrayList;
 public class LoginChat implements EntryPoint, IHandler{
 
     private final Messages messages;
-    private Button submit;
-    private Button sendMsg_Button, logout_button;
+    private Button submit, sendMsg_Button, logout_button;
     private TextBox name_field, msgUser_Field;
     private PasswordTextBox password_field;
     private Label errorLogin_label, titleUserChat_Label, errorChat_label;
@@ -31,7 +30,7 @@ public class LoginChat implements EntryPoint, IHandler{
     private ScrollPanel msgList_scrollpanel;
     private Label user;   //use: icon field
     private Label pass;   //use: icon field
-    private HandlerRegistration handler_msg_user_field, handler_send_msg_button, handler_logout_msg_button;
+    private HandlerRegistration handler_send_msg_button, handler_msg_user_field, handler_logout_msg_button;
 
 
     public LoginChat() {
@@ -79,6 +78,8 @@ public class LoginChat implements EntryPoint, IHandler{
         submit.getElement().setAttribute("name","submit");
         submit.getElement().setId("submit");
 
+        errorLogin_label.getElement().setClassName("error_text");
+
         RootPanel.get("nameFieldContainer").add(user);
         RootPanel.get("nameFieldContainer").add(name_field);
         RootPanel.get("passwordFieldContainer").add(pass);
@@ -86,34 +87,33 @@ public class LoginChat implements EntryPoint, IHandler{
         RootPanel.get("loginButtonContainer").add(submit);
         RootPanel.get("errorLoginLabelContainer").add(errorLogin_label);
 
+        RootPanel.get().addStyleName("body");
 
-    // Create the chat view
-      titleUserChat_Label.getElement().setClassName("p");
+        // Create the chat view
+        titleUserChat_Label.getElement().setClassName("p");
 
-      msgList_scrollpanel.add(msgListChat_CellList);
-      msgList_scrollpanel.addStyleName("scroll");
-
+        msgList_scrollpanel.add(msgListChat_CellList);
+        msgList_scrollpanel.addStyleName("scroll");
         RootPanel.get("titleUserChatContainer").addStyleName("head_chat");
         msgUser_Field.getElement().setClassName("input_message");
         RootPanel.get("msgListChatContainer").addStyleName("msg_list");
         sendMsg_Button.getElement().setClassName("send");
         logout_button.getElement().addClassName("logout_button");
+
         RootPanel.get("errorChatLabelContainer").addStyleName("warning");
-
-      RootPanel.get("titleUserChatContainer").add(titleUserChat_Label);
-      RootPanel.get("msgListChatContainer").add(msgList_scrollpanel);
-      RootPanel.get("msgUserFieldContainer").add(msgUser_Field);
-      RootPanel.get("sendMsgButtonContainer").add(sendMsg_Button);
-      RootPanel.get("errorChatLabelContainer").add(errorChat_label);
-      RootPanel.get("logOutButtonContainer").add(logout_button);
-      RootPanel.get("chat").setVisible(false);
-
+        RootPanel.get("titleUserChatContainer").add(titleUserChat_Label);
+        RootPanel.get("msgListChatContainer").add(msgList_scrollpanel);
+        RootPanel.get("msgUserFieldContainer").add(msgUser_Field);
+        RootPanel.get("sendMsgButtonContainer").add(sendMsg_Button);
+        RootPanel.get("errorChatLabelContainer").add(errorChat_label);
+        RootPanel.get("logOutButtonContainer").add(logout_button);
+        RootPanel.get("chat").setVisible(false);
 
         handler_login = new HandlerLogin(this);
         submit.addClickHandler(handler_login);
         name_field.addKeyUpHandler(handler_login);
         password_field.addKeyUpHandler(handler_login);
-  }
+    }
 
 
     public void setErrorLogin(String error){
