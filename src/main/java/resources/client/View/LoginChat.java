@@ -112,7 +112,7 @@ public class LoginChat implements EntryPoint, IHandler{
         msgListChat_CellList.setRowCount(countCell,true);
         msgListChat_CellList.setRowData(countCell-msg_list.size(),msg_list);
         countCell += msg_list.size();
-        msgList_scrollpanel.setVerticalScrollPosition(msgList_scrollpanel.getMaximumVerticalScrollPosition() - 1);
+        msgList_scrollpanel.setVerticalScrollPosition(msgList_scrollpanel.getMaximumVerticalScrollPosition());
     }
 
     public void setErrorChat(String error){
