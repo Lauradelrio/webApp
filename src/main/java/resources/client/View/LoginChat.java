@@ -18,9 +18,12 @@ import java.util.ArrayList;
 
 public class LoginChat implements EntryPoint, IHandler{
 
+
+
+
     private final Messages messages;
-    private Button login_button, sendMsg_Button, logout_button;
-    private TextBox userName_field, msgUser_Field;
+    private Button submit, sendMsg_Button, logout_button;
+    private TextBox name_field, msgUser_Field;
     private PasswordTextBox password_field;
     private Label errorLogin_label, titleUserChat_Label, errorChat_label;
     private TextCell msg_TextCell;
@@ -29,14 +32,19 @@ public class LoginChat implements EntryPoint, IHandler{
     private HandlerLogin handler_login;
     private HandlerChat handler_chat;
     private ScrollPanel msgList_scrollpanel;
-
+    private Label user;   //use: icon field
+    private Label pass;   //use: icon field
 
     public LoginChat() {
         messages = GWT.create(Messages.class);
-        login_button = new Button( messages.loginButton() );
-        userName_field = new TextBox();
+
+        user = new Label("p");
+        name_field = new TextBox();
+        pass = new Label("k");
         password_field = new PasswordTextBox();
+        submit = new Button( "a" );
         errorLogin_label = new Label();
+
         msgUser_Field = new TextBox();
         sendMsg_Button = new Button(messages.sendButton());
         msg_TextCell = new TextCell();
@@ -50,22 +58,51 @@ public class LoginChat implements EntryPoint, IHandler{
 
 
     public void onModuleLoad() {
-
-
       // Create the login view
-      userName_field.getElement().setAttribute("placeholder",messages.nameField());
-      password_field.getElement().setAttribute("placeholder",messages.passwordField());
-      RootPanel.get("nameFieldContainer").add(userName_field);
-      RootPanel.get("passwordFieldContainer").add(password_field);
-      RootPanel.get("loginButtonContainer").add(login_button);
-      RootPanel.get("errorLoginLabelContainer").add(errorLogin_label);
-      userName_field.setFocus(true);
-      userName_field.selectAll();
+        user.getElement().setClassName("label_block");
+        user.getElement().setAttribute("for","name");
+        user.getElement().setId("user");
+
+        name_field.getElement().setId("name");
+        name_field.setName("name");
+        name_field.getElement().setClassName("name");
+        name_field.getElement().setAttribute("placeholder",messages.nameField());
+        name_field.getElement().setAttribute("required","true");
+        name_field.getElement().setAttribute("name","name");
+
+        pass.getElement().setClassName("label_block");
+        pass.addStyleName("pass");
+
+        password_field.getElement().setAttribute("placeholder",messages.passwordField());
+
+        submit.getElement().setAttribute("name","submit");
+        submit.getElement().setId("submit");
+
+        errorLogin_label.getElement().setClassName("error_text");
+
+        RootPanel.get("nameFieldContainer").add(user);
+        RootPanel.get("nameFieldContainer").add(name_field);
+        RootPanel.get("passwordFieldContainer").add(pass);
+        RootPanel.get("passwordFieldContainer").add(password_field);
+        RootPanel.get("loginButtonContainer").add(submit);
+        RootPanel.get("errorLoginLabelContainer").add(errorLogin_label);
+
+        RootPanel.get().addStyleName("body");
 
 
     // Create the chat view
+
+      titleUserChat_Label.getElement().setClassName("p");
+
       msgList_scrollpanel.add(msgListChat_CellList);
       msgList_scrollpanel.addStyleName("scroll");
+      RootPanel.get("titleUserChatContainer").addStyleName("head_chat");
+      msgUser_Field.getElement().setClassName("input_message");
+      RootPanel.get("msgListChatContainer").addStyleName("msg_list");
+      sendMsg_Button.getElement().setClassName("send");
+      logout_button.getElement().addClassName("logout_button");
+
+      RootPanel.get("errorChatLabelContainer").addStyleName("warning");
       RootPanel.get("titleUserChatContainer").add(titleUserChat_Label);
       RootPanel.get("msgListChatContainer").add(msgList_scrollpanel);
       RootPanel.get("msgUserFieldContainer").add(msgUser_Field);
@@ -76,9 +113,9 @@ public class LoginChat implements EntryPoint, IHandler{
 
 
     handler_login = new HandlerLogin(this);
-    login_button.addClickHandler(handler_login);
-    userName_field.addKeyUpHandler(handler_login);
-    password_field.addKeyUpHandler(handler_login);
+        submit.addClickHandler(handler_login);
+        name_field.addKeyUpHandler(handler_login);
+        password_field.addKeyUpHandler(handler_login);
   }
 
 
@@ -87,7 +124,7 @@ public class LoginChat implements EntryPoint, IHandler{
     }
 
     public String getUserName(){
-        return userName_field.getText().toString();
+        return name_field.getText().toString();
     }
 
     public String getPasswordName(){
@@ -127,7 +164,7 @@ public class LoginChat implements EntryPoint, IHandler{
     }
 
     public void logout(){
-        userName_field.setText("");
+        name_field.setText("");
         password_field.setText("");
         countCell=0;
         RootPanel.get("chat").setVisible(false);
