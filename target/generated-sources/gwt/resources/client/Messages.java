@@ -2,7 +2,7 @@ package resources.client;
 
 /**
  * Interface to represent the messages contained in resource bundle:
- * 	/home/startic/IdeaProjects/webApp2/src/main/resources/resources/client/Messages.properties'.
+ * 	/home/laura/Repositorios/webApp/src/main/resources/resources/client/Messages.properties'.
  */
 public interface Messages extends com.google.gwt.i18n.client.Messages {
   

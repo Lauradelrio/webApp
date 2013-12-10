@@ -9,8 +9,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/gwt" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/target/.generated" />
-      <excludeFolder url="file://$MODULE_DIR$/target/gwt-unitCache" />
       <excludeFolder url="file://$MODULE_DIR$/target/webApp-1.0-SNAPSHOT" />
     </content>
     <orderEntry type="inheritedJdk" />
