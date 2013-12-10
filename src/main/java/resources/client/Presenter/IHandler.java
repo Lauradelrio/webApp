@@ -1,5 +1,7 @@
 package resources.client.Presenter;
 
+import com.google.gwt.user.client.ui.Widget;
+
 import java.util.ArrayList;
 
 /**
@@ -19,4 +21,7 @@ public interface IHandler {
     public void setMsgList(ArrayList<String> msg_list);
     public void setErrorChat(String error);
     public void addHandlerChat();
+    public void logout();
+    public Widget getButtonSend();
+    public Widget getButtonLogout();
 }

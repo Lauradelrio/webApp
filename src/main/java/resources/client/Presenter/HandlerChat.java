@@ -2,6 +2,7 @@ package resources.client.Presenter;
 
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.ui.Widget;
 import resources.client.View.LoginChat;
 import com.google.gwt.user.client.Cookies;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class HandlerChat implements ClickHandler, KeyUpHandler {
     private static int num_seq;
     private static String user_name;
     static IHandler interface_login = new LoginChat();
+    Widget sender;
 
     public HandlerChat(IHandler login){
         interface_login=login;
@@ -37,8 +39,14 @@ public class HandlerChat implements ClickHandler, KeyUpHandler {
     }
 
     public void onClick(ClickEvent event) {
-
-        sendMsgToServer();
+        /*if(send) sendMsgToServer();
+        else if (logout) logout();*/
+        sender = (Widget) event.getSource();
+        if (sender == interface_login.getButtonSend()) {
+            sendMsgToServer();
+        } else if (sender == interface_login.getButtonLogout()) {
+            logout();
+        }
     }
 
     public void onKeyUp(KeyUpEvent event) {
@@ -57,6 +65,10 @@ public class HandlerChat implements ClickHandler, KeyUpHandler {
     private void listenerServer(int n_seq){
         listener_server= new ListenerServer();
         listener_server.requestMessagesToTheServer(url,Integer.toString(n_seq));
+    }
+
+    private void logout(){
+        interface_login.logout();
     }
 
 
