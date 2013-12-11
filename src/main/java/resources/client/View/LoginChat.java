@@ -18,16 +18,16 @@ import java.util.ArrayList;
 public class LoginChat implements EntryPoint, IHandler{
 
     private final Messages messages;
-    private Button submit, sendMsg_Button, logout_button;
-    private TextBox name_field, msgUser_Field;
+    private Button submit, send_msg_Button, logout_button;
+    private TextBox name_field, msg_user_Field;
     private PasswordTextBox password_field;
-    private Label errorLogin_label, titleUserChat_Label, errorChat_label;
-    private TextCell msg_TextCell;
-    private CellList<String> msgListChat_CellList;
+    private Label error_login_label, title_user_chat_Label, error_chat_label;
+    private TextCell msg_textcell;
+    private CellList<String> msg_list_chat_celllist;
     private int countCell;
     private HandlerLogin handler_login;
     private HandlerChat handler_chat;
-    private ScrollPanel msgList_scrollpanel;
+    private ScrollPanel msg_list_scrollpanel;
     private Label user;   //use: icon field
     private Label pass;   //use: icon field
     private HandlerRegistration handler_send_msg_button, handler_msg_user_field, handler_logout_msg_button;
@@ -41,16 +41,16 @@ public class LoginChat implements EntryPoint, IHandler{
         pass = new Label("k");
         password_field = new PasswordTextBox();
         submit = new Button( "a" );
-        errorLogin_label = new Label();
+        error_login_label = new Label();
 
-        msgUser_Field = new TextBox();
-        sendMsg_Button = new Button(messages.sendButton());
-        msg_TextCell = new TextCell();
-        msgListChat_CellList = new CellList<String>(msg_TextCell);
-        titleUserChat_Label = new Label();
-        errorChat_label = new Label();
+        msg_user_Field = new TextBox();
+        send_msg_Button = new Button(messages.sendButton());
+        msg_textcell = new TextCell();
+        msg_list_chat_celllist = new CellList<String>(msg_textcell);
+        title_user_chat_Label = new Label();
+        error_chat_label = new Label();
         countCell=0;
-        msgList_scrollpanel= new ScrollPanel();
+        msg_list_scrollpanel= new ScrollPanel();
         logout_button = new Button( messages.logoutButton());
     }
 
@@ -78,34 +78,34 @@ public class LoginChat implements EntryPoint, IHandler{
         submit.getElement().setAttribute("name","submit");
         submit.getElement().setId("submit");
 
-        errorLogin_label.getElement().setClassName("error_text");
+        error_login_label.getElement().setClassName("error_text");
 
         RootPanel.get("nameFieldContainer").add(user);
         RootPanel.get("nameFieldContainer").add(name_field);
         RootPanel.get("passwordFieldContainer").add(pass);
         RootPanel.get("passwordFieldContainer").add(password_field);
         RootPanel.get("loginButtonContainer").add(submit);
-        RootPanel.get("errorLoginLabelContainer").add(errorLogin_label);
+        RootPanel.get("errorLoginLabelContainer").add(error_login_label);
 
         RootPanel.get().addStyleName("body");
 
         // Create the chat view
-        titleUserChat_Label.getElement().setClassName("p");
+        title_user_chat_Label.getElement().setClassName("p");
 
-        msgList_scrollpanel.add(msgListChat_CellList);
-        msgList_scrollpanel.addStyleName("scroll");
+        msg_list_scrollpanel.add(msg_list_chat_celllist);
+        msg_list_scrollpanel.addStyleName("scroll");
         RootPanel.get("titleUserChatContainer").addStyleName("head_chat");
-        msgUser_Field.getElement().setClassName("input_message");
+        msg_user_Field.getElement().setClassName("input_message");
         RootPanel.get("msgListChatContainer").addStyleName("msg_list");
-        sendMsg_Button.getElement().setClassName("send");
+        send_msg_Button.getElement().setClassName("send");
         logout_button.getElement().addClassName("logout_button");
 
         RootPanel.get("errorChatLabelContainer").addStyleName("warning");
-        RootPanel.get("titleUserChatContainer").add(titleUserChat_Label);
-        RootPanel.get("msgListChatContainer").add(msgList_scrollpanel);
-        RootPanel.get("msgUserFieldContainer").add(msgUser_Field);
-        RootPanel.get("sendMsgButtonContainer").add(sendMsg_Button);
-        RootPanel.get("errorChatLabelContainer").add(errorChat_label);
+        RootPanel.get("titleUserChatContainer").add(title_user_chat_Label);
+        RootPanel.get("msgListChatContainer").add(msg_list_scrollpanel);
+        RootPanel.get("msgUserFieldContainer").add(msg_user_Field);
+        RootPanel.get("sendMsgButtonContainer").add(send_msg_Button);
+        RootPanel.get("errorChatLabelContainer").add(error_chat_label);
         RootPanel.get("logOutButtonContainer").add(logout_button);
         RootPanel.get("chat").setVisible(false);
 
@@ -117,7 +117,7 @@ public class LoginChat implements EntryPoint, IHandler{
 
 
     public void setErrorLogin(String error){
-        errorLogin_label.setText(error);
+        error_login_label.setText(error);
     }
 
     public String getUserName(){
@@ -129,34 +129,34 @@ public class LoginChat implements EntryPoint, IHandler{
     }
 
     public void setTitleChat(String name){
-        titleUserChat_Label.setText("CHAT KATA - "+ name);
+        title_user_chat_Label.setText("CHAT KATA - "+ name);
     }
 
     public String getMsgUser(){
-        return  msgUser_Field.getText().toString();
+        return  msg_user_Field.getText().toString();
     }
 
     public void setMsgUser(String msg){
-        msgUser_Field.setText(msg);
+        msg_user_Field.setText(msg);
     }
 
     public void setMsgList(ArrayList<String> msg_list){
         countCell += msg_list.size();
-        msgListChat_CellList.setPageSize(countCell);
-        msgListChat_CellList.setRowCount(countCell,true);
-        msgListChat_CellList.setRowData(countCell-msg_list.size(),msg_list);
+        msg_list_chat_celllist.setPageSize(countCell);
+        msg_list_chat_celllist.setRowCount(countCell,true);
+        msg_list_chat_celllist.setRowData(countCell-msg_list.size(),msg_list);
         countCell += msg_list.size();
-        msgList_scrollpanel.setVerticalScrollPosition(msgList_scrollpanel.getMaximumVerticalScrollPosition());
+        msg_list_scrollpanel.setVerticalScrollPosition(msg_list_scrollpanel.getMaximumVerticalScrollPosition());
     }
 
     public void setErrorChat(String error){
-        errorChat_label.setText(error);
+        error_chat_label.setText(error);
     }
 
     public void addHandlerChat(){
         handler_chat = new HandlerChat(this);
-        handler_send_msg_button = sendMsg_Button.addClickHandler(handler_chat);
-        handler_msg_user_field = msgUser_Field.addKeyUpHandler(handler_chat);
+        handler_send_msg_button = send_msg_Button.addClickHandler(handler_chat);
+        handler_msg_user_field = msg_user_Field.addKeyUpHandler(handler_chat);
         handler_logout_msg_button = logout_button.addClickHandler(handler_chat);
     }
 
@@ -173,7 +173,7 @@ public class LoginChat implements EntryPoint, IHandler{
     }
 
     public Widget getButtonSend(){
-        return sendMsg_Button;
+        return send_msg_Button;
     }
 
     public Widget getButtonLogout(){

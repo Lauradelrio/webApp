@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="553de231-46e3-4195-96d7-2f58b091697d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/login.css" afterPath="$PROJECT_DIR$/src/main/webapp/login.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webApp.iml" afterPath="$PROJECT_DIR$/webApp.iml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/ana.css" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/resources/client/View/LoginChat.java" afterPath="$PROJECT_DIR$/src/main/java/resources/client/View/LoginChat.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/resources/client/Presenter/SenderServer.java" afterPath="$PROJECT_DIR$/src/main/java/resources/client/Presenter/SenderServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="webApp.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="553de231-46e3-4195-96d7-2f58b091697d" time="1386690801566" ignored="false" />
+    <file path="/Dummy.txt" changelist="553de231-46e3-4195-96d7-2f58b091697d" time="1386751789095" ignored="false" />
     <file path="/login.java" changelist="553de231-46e3-4195-96d7-2f58b091697d" time="1386259980386" ignored="false" />
     <file path="/FieldVerifier.java" changelist="553de231-46e3-4195-96d7-2f58b091697d" time="1386240708065" ignored="false" />
     <file path="/login.html" changelist="553de231-46e3-4195-96d7-2f58b091697d" time="1386689587024" ignored="false" />
@@ -89,64 +90,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LoginChat.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/View/LoginChat.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="22" selection-start="3495" selection-end="3501" vertical-scroll-proportion="-9.16">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/login.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="263" column="3" selection-start="5213" selection-end="5213" vertical-scroll-proportion="0.33229813">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.gwt.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/resources/login.gwt.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="35" selection-start="824" selection-end="824" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Messages.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/resources/client/Messages.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="89" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="7" selection-start="1521" selection-end="1521" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="HandlerLogin.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Presenter/HandlerLogin.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="36" column="41" selection-start="885" selection-end="885" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IHandler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Presenter/IHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="36" selection-start="752" selection-end="752" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -161,10 +108,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <file leaf-file-name="Message.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Model/Message.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="184" selection-end="184" vertical-scroll-proportion="0.0">
+            <state line="9" column="13" selection-start="197" selection-end="197" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IResponseFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Model/IResponseFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="25" selection-start="413" selection-end="425" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IResponse.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Model/IResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="21" selection-start="348" selection-end="360" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IChatMessage.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Model/IChatMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="17" selection-start="259" selection-end="259" vertical-scroll-proportion="0.19715224">
               <folding />
             </state>
           </provider>
@@ -189,7 +167,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/resources/client/Presenter/SenderServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/resources/client/Presenter/InterfaceHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/resources/client/View/Login.java" />
         <option value="$PROJECT_DIR$/src/main/java/resources/client/GreetingService.java" />
@@ -202,9 +179,10 @@
         <option value="$PROJECT_DIR$/src/main/resources/resources/client/Messages.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/resources/login.gwt.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/login.html" />
-        <option value="$PROJECT_DIR$/src/main/java/resources/client/View/LoginChat.java" />
         <option value="$PROJECT_DIR$/src/main/java/resources/client/Login.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/login.css" />
+        <option value="$PROJECT_DIR$/src/main/java/resources/client/View/LoginChat.java" />
+        <option value="$PROJECT_DIR$/src/main/java/resources/client/Presenter/SenderServer.java" />
       </list>
     </option>
   </component>
@@ -300,6 +278,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -528,22 +508,20 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="OverrideImplement.combined" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="MemberChooser.sorted" value="false" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="dynamic.classpath" value="false" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="RunManager" selected="Remote.GWT debug">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -582,19 +560,6 @@
       <option name="PORT" value="8080" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -620,6 +585,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -746,7 +724,11 @@
       <created>1386690810834</created>
       <updated>1386690810834</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Terminadito :)">
+      <created>1386696485011</created>
+      <updated>1386696485011</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -761,16 +743,16 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21448314" sideWeight="0.7641409" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21669431" sideWeight="0.7641409" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18352681" sideWeight="0.7641409" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23585913" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23585913" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32800853" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
@@ -817,7 +799,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Todo ya!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Terminadito :)" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -841,6 +823,7 @@
     <MESSAGE value="commit tonto" />
     <MESSAGE value="Funcionalidad completa, algo de css" />
     <MESSAGE value="Todo ya!!!!" />
+    <MESSAGE value="Terminadito :)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -850,51 +833,72 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Model/IResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="21" selection-start="348" selection-end="360" vertical-scroll-proportion="0.31424582">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Model/IResponseFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="25" selection-start="413" selection-end="425" vertical-scroll-proportion="0.2932961">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/ana.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="17" selection-start="640" selection-end="667" vertical-scroll-proportion="0.5232558" />
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.6.0-rc1/gwt-user-2.6.0-rc1.jar!/com/google/gwt/user/client/ui/Panel.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="16" selection-start="447" selection-end="447" vertical-scroll-proportion="0.22556391" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Presenter/SenderServer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/View/LoginChat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="19" selection-start="1012" selection-end="1012" vertical-scroll-proportion="0.5886628">
+        <state line="148" column="75" selection-start="5622" selection-end="5622" vertical-scroll-proportion="2.0332541">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="263" column="3" selection-start="5213" selection-end="5213" vertical-scroll-proportion="1.3964951">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/resources/login.gwt.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="35" selection-start="824" selection-end="824" vertical-scroll-proportion="0.2464403">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/resources/client/Messages.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="89" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0">
+        <state line="5" column="89" selection-start="151" selection-end="151" vertical-scroll-proportion="0.08214677">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="7" selection-start="1521" selection-end="1521" vertical-scroll-proportion="0.86051744">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Presenter/IHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="36" selection-start="752" selection-end="752" vertical-scroll-proportion="0.0">
+        <state line="25" column="36" selection-start="752" selection-end="752" vertical-scroll-proportion="0.37787515">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="184" selection-end="184" vertical-scroll-proportion="0.11500548">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Presenter/SenderServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="24" selection-start="769" selection-end="769" vertical-scroll-proportion="0.36144578">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Presenter/ListenerServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="57" selection-start="1742" selection-end="1742" vertical-scroll-proportion="0.42497262">
           <folding />
         </state>
       </provider>
@@ -906,13 +910,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Presenter/ListenerServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="57" selection-start="1742" selection-end="1742" vertical-scroll-proportion="0.56686044">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Presenter/HandlerChat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="5" selection-start="1244" selection-end="1244" vertical-scroll-proportion="0.0">
@@ -920,37 +917,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Model/Message.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="184" selection-end="184" vertical-scroll-proportion="0.0">
+        <state line="9" column="13" selection-start="197" selection-end="197" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/resources/login.gwt.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Model/IResponseFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="35" selection-start="824" selection-end="824" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="14" column="25" selection-start="413" selection-end="425" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Model/IResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="7" selection-start="1521" selection-end="1521" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="15" column="21" selection-start="348" selection-end="360" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/View/LoginChat.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/resources/client/Model/IChatMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="22" selection-start="3495" selection-end="3501" vertical-scroll-proportion="-9.16">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="263" column="3" selection-start="5213" selection-end="5213" vertical-scroll-proportion="0.33229813">
+        <state line="12" column="17" selection-start="259" selection-end="259" vertical-scroll-proportion="0.19715224">
           <folding />
         </state>
       </provider>

@@ -13,11 +13,12 @@ import com.google.gwt.user.client.Window;
 public class SenderServer {
     public static void doPost(String url, String msg, String user) {
         RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, url);
+        Request response;
 
         try {
             builder.setHeader("Content-Type", "application/json");
             msg= msgToFormatJson(msg,user);
-            Request response = builder.sendRequest(msg, new RequestCallback() {
+            response = builder.sendRequest(msg, new RequestCallback() {
 
                 public void onError(Request request, Throwable exception) {
                     HandlerChat.errorWithServer("Error: Message can't be delivered");
